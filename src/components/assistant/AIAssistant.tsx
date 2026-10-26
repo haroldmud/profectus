@@ -93,8 +93,14 @@ export function AIAssistant() {
               </div>
             ))}
             {loading && (
-              <div className="bg-white/8 text-white/40 text-sm rounded-xl px-3 py-2 w-12 animate-pulse">
-                ...
+              <div className="bg-white/8 rounded-xl px-3 py-3 flex items-center gap-1.5 w-fit">
+                {[0, 150, 300].map((delay, i) => (
+                  <span
+                    key={i}
+                    className="block w-1.5 h-1.5 rounded-full bg-white/40"
+                    style={{ animation: `bounce-dot 1.1s ease-in-out ${delay}ms infinite` }}
+                  />
+                ))}
               </div>
             )}
             <div ref={bottomRef} />
