@@ -2,7 +2,7 @@
 
 import { useProgressStore } from '@/store/progress'
 import { StatusChip } from '@/components/ui/StatusChip'
-import { TopicTypeIcon } from '@/components/ui/TopicTypeIcon'
+import { TopicIcon } from '@/components/ui/TopicIcon'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Status } from '@/types'
 import Link from 'next/link'
@@ -42,7 +42,7 @@ export function ModuleDetail({ moduleId }: { moduleId: string }) {
             className="flex items-center justify-between rounded-xl border border-white/8 bg-white/5 px-5 py-4 gap-4 hover:border-white/15 transition-colors"
           >
             <div className="flex items-center gap-3 min-w-0">
-              <TopicTypeIcon type={topic.type} />
+              <TopicIcon title={topic.title} color={mod.color} />
               <span className="text-sm text-white/80">{topic.title}</span>
             </div>
             <StatusChip

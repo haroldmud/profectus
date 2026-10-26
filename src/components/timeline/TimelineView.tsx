@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useProgressStore } from '@/store/progress'
 import { StatusChip } from '@/components/ui/StatusChip'
-import { TopicTypeIcon } from '@/components/ui/TopicTypeIcon'
+import { TopicIcon } from '@/components/ui/TopicIcon'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Status } from '@/types'
 
@@ -62,7 +62,7 @@ export function TimelineView() {
                       className="flex items-center justify-between rounded-xl border border-white/8 bg-white/5 px-4 py-3 gap-4"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
-                        <TopicTypeIcon type={topic.type} />
+                        <TopicIcon title={topic.title} color={mod.color} />
                         <span className="text-sm text-white/80 truncate">{topic.title}</span>
                       </div>
                       <StatusChip
