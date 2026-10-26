@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useProgressStore } from '@/store/progress'
-import { getAIClient } from '@/lib/ai'
+import { sendChatMessage } from '@/lib/ai'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -42,18 +42,14 @@ export function AIAssistant() {
     setLoading(true)
 
     try {
-      const res = await getAIClient().chat.completions.create({
-        model: 'claude-haiku-4-5',
-        messages: [
-          { role: 'system', content: buildSystemPrompt(modules) },
-          ...messages,
-          userMsg,
-        ],
-      })
-      const reply = res.choices[0]?.message?.content ?? 'No response.'
+      const reply = await sendChatMessage([
+        { role: 'system', content: buildSystemPrompt(modules) },
+        ...messages,
+        userMsg,
+      ])
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }])
-    } catch (e) {
-      setMessages((prev) => [...prev, { role: 'assistant', content: 'Error reaching AI. Check your API key.' }])
+    } catch {
+      setMessages((prev) => [...prev, { role: 'assistant', content: 'Error reaching AI. Please try again.' }])
     } finally {
       setLoading(false)
     }

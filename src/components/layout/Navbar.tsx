@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useProgressStore } from '@/store/progress'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Suspense } from 'react'
+import { Brain } from 'lucide-react'
 
 const LINKS = [
   { href: '/', label: 'Overview' },
@@ -40,8 +41,9 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0d0d0f]/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-8">
         <div className="flex items-center gap-6">
-          <span className="font-bold text-white tracking-tight text-lg">
-            <span className="text-white/40">✦</span> Profectus
+          <span className="font-bold text-white tracking-tight text-lg flex items-center gap-2">
+            <Brain size={18} className="text-purple-400" />
+            Profectus
           </span>
           <Suspense fallback={<nav className="flex gap-1 h-8" />}>
             <NavLinks />
