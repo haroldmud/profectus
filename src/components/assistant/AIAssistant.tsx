@@ -68,7 +68,7 @@ export function AIAssistant() {
 
       {/* panel */}
       {open && (
-        <div className="fixed bottom-20 right-6 w-80 h-[480px] flex flex-col rounded-2xl border border-white/15 bg-[#111113] shadow-2xl z-50 overflow-hidden">
+        <div className="animate-pop-in fixed bottom-20 right-6 w-80 h-[480px] flex flex-col rounded-2xl border border-white/15 bg-[#111113] shadow-2xl z-50 overflow-hidden">
           <div className="px-4 py-3 border-b border-white/10 flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-purple-400" />
             <span className="text-sm font-medium text-white">AI Coach</span>
