@@ -10,6 +10,7 @@ import { Brain } from 'lucide-react'
 const LINKS = [
   { href: '/', label: 'Overview' },
   { href: '/timeline', label: 'Timeline' },
+  { href: '/analytics', label: 'Analytics' },
 ]
 
 function NavLinks() {
@@ -34,8 +35,9 @@ function NavLinks() {
 }
 
 export function Navbar() {
-  const getGlobalProgress = useProgressStore((s) => s.getGlobalProgress)
-  const progress = getGlobalProgress()
+  const modules = useProgressStore((s) => s.modules)
+  const all = modules.flatMap((m) => m.topics)
+  const progress = all.length === 0 ? 0 : Math.round(all.filter((t) => t.status === 'done').length / all.length * 100)
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0d0d0f]/80 backdrop-blur-md">

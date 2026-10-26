@@ -8,6 +8,8 @@ export interface Topic {
   type: TopicType
   status: Status
   notes?: string
+  startedAt?: string
+  completedAt?: string
 }
 
 export interface Module {

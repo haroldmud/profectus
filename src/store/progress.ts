@@ -25,9 +25,16 @@ export const useProgressStore = create<ProgressStore>()(
               ? m
               : {
                   ...m,
-                  topics: m.topics.map((t) =>
-                    t.id !== topicId ? t : { ...t, status }
-                  ),
+                  topics: m.topics.map((t) => {
+                    if (t.id !== topicId) return t
+                    const now = new Date().toISOString()
+                    return {
+                      ...t,
+                      status,
+                      startedAt: t.startedAt ?? (status !== 'not_started' ? now : undefined),
+                      completedAt: status === 'done' ? now : undefined,
+                    }
+                  }),
                 }
           ),
         })),

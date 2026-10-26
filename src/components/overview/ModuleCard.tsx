@@ -12,10 +12,10 @@ const TYPE_COUNTS = (topics: Module['topics']) => {
 }
 
 export function ModuleCard({ module }: { module: Module }) {
-  const getModuleProgress = useProgressStore((s) => s.getModuleProgress)
-  const progress = getModuleProgress(module.id)
-  const counts = TYPE_COUNTS(module.topics)
-  const done = module.topics.filter((t) => t.status === 'done').length
+  const topics = useProgressStore((s) => s.modules.find((m) => m.id === module.id)?.topics ?? [])
+  const progress = topics.length === 0 ? 0 : Math.round(topics.filter((t) => t.status === 'done').length / topics.length * 100)
+  const counts = TYPE_COUNTS(topics)
+  const done = topics.filter((t) => t.status === 'done').length
 
   return (
     <Link
