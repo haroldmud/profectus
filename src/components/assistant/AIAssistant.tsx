@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useProgressStore } from '@/store/progress'
-import { aiClient } from '@/lib/ai'
+import { getAIClient } from '@/lib/ai'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -42,7 +42,7 @@ export function AIAssistant() {
     setLoading(true)
 
     try {
-      const res = await aiClient.chat.completions.create({
+      const res = await getAIClient().chat.completions.create({
         model: 'claude-haiku-4-5',
         messages: [
           { role: 'system', content: buildSystemPrompt(modules) },
