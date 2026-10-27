@@ -6,6 +6,8 @@ import { Module, Status } from '@/types'
 import { CURRICULUM } from '@/data/curriculum'
 
 interface ProgressStore {
+  _hasHydrated: boolean
+  setHasHydrated: (val: boolean) => void
   modules: Module[]
   setTopicStatus: (moduleId: string, topicId: string, status: Status) => void
   setTopicNotes: (moduleId: string, topicId: string, notes: string) => void
@@ -16,6 +18,8 @@ interface ProgressStore {
 export const useProgressStore = create<ProgressStore>()(
   persist(
     (set, get) => ({
+      _hasHydrated: false,
+      setHasHydrated: (val) => set({ _hasHydrated: val }),
       modules: CURRICULUM,
 
       setTopicStatus: (moduleId, topicId, status) =>
