@@ -71,6 +71,12 @@ export const useProgressStore = create<ProgressStore>()(
         return Math.round((done / all.length) * 100)
       },
     }),
-    { name: 'profectus-progress' }
+    {
+      name: 'profectus-progress',
+      skipHydration: true,
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      },
+    }
   )
 )
