@@ -87,7 +87,7 @@ export function TimelineView() {
                     return (
                       <div
                         key={topic.id}
-                        className="rounded-xl border border-white/8 bg-white/5 hover:border-white/15 transition-colors"
+                        className="group/topic rounded-xl border border-white/8 bg-white/5 hover:border-white/15 transition-colors"
                       >
                         <div className="flex items-center justify-between px-4 py-3 gap-4">
                           <div className="flex items-center gap-2.5 min-w-0">
@@ -97,7 +97,7 @@ export function TimelineView() {
                           <div className="flex items-center gap-2 shrink-0">
                             <button
                               onClick={() => toggleNotes(topic.id)}
-                              className="flex items-center gap-1 text-xs text-white/30 hover:text-white/60 transition-colors px-2 py-1 rounded-md hover:bg-white/5"
+                              className={`flex items-center gap-1 text-xs text-white/30 hover:text-white/60 transition-colors px-2 py-1 rounded-md hover:bg-white/5 ${notesOpen ? 'opacity-100' : 'opacity-0 group-hover/topic:opacity-100'}`}
                               aria-label="Toggle notes"
                             >
                               {notesOpen ? '▲' : '▼'}
